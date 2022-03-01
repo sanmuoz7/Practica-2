@@ -341,10 +341,10 @@ En esta sección vamos a utilizar **ggplot2** para representar distribuciones de
 load("./data/weatherAUS_distributions.Rdata")
 grafico <- ggplot(ds, aes(x=MinTemp, y=Year)) + geom_boxplot()
 grafico
-grafico1 <- ggplot(ds, aes(x=MinTemp, y=Year)) + geom_violin() + labs(title = "Distribución de temperaturas máximas por año", x="Año", y="Temperatura(ºC)")
+grafico1 <- ggplot(ds, aes(x=MinTemp, y=Year)) + geom_violin(aes(colour=Year, fill=Year)) + labs(title = "Distribución de temperaturas máximas por año", x="Año", y="Temperatura(ºC)")
 grafico1
 #Como no hay leyenda, no elimino nada
-ggsave("./figure/Ejercicio5.pdf")
+ggsave("./figure/Ejercicio6.pdf")
 ```
 
 ## Histogramas con **ggplot2**
@@ -412,7 +412,19 @@ ggplot(data=dataset_hist1, aes(x=AGE)) +
 * Almacena en formato **pdf** el gráfico resultante en un fichero denominado ``Ejercicio7.pdf``.
 
 ```{r Solucion ejercicio 7}
-
+library(readr)
+chol <- read_table2("http://assets.datacamp.com/blog_assets/chol.txt")
+grafico <- ggplot(chol, aes(x=HEIGHT))
+grafico + geom_histogram() + labs(title="Histograma de la variable Altura", x="Altura(cm)", y="Frecuencia")
+grafico1 <- grafico + geom_histogram(breaks=seq(155, 195, by=2))
+grafico1
+grafico2 <- grafico + geom_histogram(breaks=seq(155, 195, by=2),col="red",fill="blue",alpha=.5)
+grafico2
+grafico3 <- grafico2 + geom_histogram(aes(y=stat(density))) + geom_density(col="green")
+grafico3
+grafico4 <- grafico3 + facet_grid(.~SMOKE)
+grafico4
+ggsave("./figure/Ejercicio7.pdf")
 ```
 
 ## Gráficos de barras con **ggplot2**
