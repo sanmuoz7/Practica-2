@@ -142,7 +142,7 @@ grafico2 <- ggplot(ds, aes(x=MinTemp, y=MaxTemp, colour=RainTomorrow))+geom_poin
 grafico2
 grafico3 <- grafico2+ggtitle("Pronóstico de lluvia")
 grafico3
-ggsave("Ejercicio1.pdf")
+ggsave("./figure/Ejercicio1.pdf")
 ```
 
 ### **Ejercicio 2**
@@ -162,6 +162,7 @@ grafico2 <- ggplot(ds, aes(x=Temp9am, y=Pressure9am, colour=RainToday))+geom_poi
 grafico2 #Se entiende mejor al aplicar la variable RainToday como color.
 grafico3 <- grafico2+ggtitle("Gráfico de dispersion de la temperatura sobre la presión")
 grafico3
+ggsave("./figure/Ejercicio2.pdf")
 ```
 
 ### **Ejercicio 3**
