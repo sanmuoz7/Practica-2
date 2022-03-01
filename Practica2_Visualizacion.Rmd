@@ -264,7 +264,16 @@ ggplot(data=Dosis.Medicina2, aes(x=Dosis, y=Efectividad, group=Complemento)) +
 * Almacena en formato **pdf** el gráfico resultante en un fichero denominado ``Ejercicio4.pdf``.
 
 ```{r Solucion ejercicio 4}
-
+load("./data/Ejercicio4_Data.Rdata")
+str(DatosEjer4)
+grafico <- ggplot(DatosEjer4, aes(x=Fecha, y=Ventas, colour=Fabricante)) + geom_point()
+grafico1 <- grafico + geom_line()
+grafico1
+grafico2 <- ggplot(DatosEjer4, aes(x=Fecha, y=Ventas, colour=Fabricante)) + geom_point() + geom_line(aes(linetype=Fabricante))
+grafico2
+grafico3 <- grafico2 + ggtitle("Ventas mensuales de diferentes compañías tecnológicas")
+grafico3
+ggsave("./figure/Ejercicio4.pdf")
 ```
 
 ## Barras de error con **ggplot2**
