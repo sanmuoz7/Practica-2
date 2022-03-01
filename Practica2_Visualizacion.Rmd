@@ -177,7 +177,20 @@ ggsave("./figure/Ejercicio2.pdf")
 * Almacena en formato **pdf** el gráfico resultante en un fichero denominado ``Ejercicio3.pdf``.
 
 ```{r Solucion ejercicio 3}
-
+load("./data/iris_tidy.Rdata")
+str(iris.tidy)
+iris.grafico1 <- ggplot(iris.tidy, aes(x=Species, y=Value))
+iris.grafico1
+iris.grafico2 <- iris.grafico1+geom_point()
+iris.grafico2 <- ggplot(iris.tidy, aes(x=Species, y=Value, colour=Part))+geom_point()
+iris.grafico2 
+iris.grafico3 <- ggplot(iris.tidy, aes(x=Species, y=Value, colour=Part))+geom_point()+facet_grid(.~Measure)
+iris.grafico3
+iris.grafico4 <- ggplot(iris.tidy, aes(x=Species, y=Value, colour=Part))+geom_point()+facet_grid(Measure~.)
+iris.grafico4 #En columnas se comparan mejor
+iris.grafico5 <- ggplot(iris.tidy, aes(x=Species, y=Value, colour=Part))+geom_jitter()+facet_grid(.~Measure)
+iris.grafico5 #Que ahora los valores están más dispersos
+ggsave("./figure/Ejercicio3.pdf")
 ```
 
 ## Gráficos de línea con **ggplot2**
