@@ -134,7 +134,15 @@ p2
 * Almacena en formato **pdf** el gráfico resultante en un fichero denominado ``Ejercicio1.pdf``.
 
 ```{r Solucion ejercicio 1}
-
+load("./data/weatherAUS.RData")
+grafico1 <- ggplot(ds, aes(x=MinTemp, y=MaxTemp))
+grafico1 <- grafico1+geom_point()
+grafico1
+grafico2 <- ggplot(ds, aes(x=MinTemp, y=MaxTemp, colour=RainTomorrow))+geom_point()
+grafico2
+grafico3 <- grafico2+ggtitle("Pronóstico de lluvia")
+grafico3
+ggsave("Ejercicio1.pdf")
 ```
 
 ### **Ejercicio 2**
@@ -146,7 +154,14 @@ p2
 * Almacena en formato **pdf** el gráfico resultante en un fichero denominado ``Ejercicio2.pdf``.
 
 ```{r Solucion ejercicio 2}
-
+grafico <- ggplot(ds, aes(x=Temp9am, y=Pressure9am))
+grafico
+grafico1 <- ggplot(ds, aes(x=Temp9am, y=Pressure9am, shape=RainToday))+geom_point()
+grafico1
+grafico2 <- ggplot(ds, aes(x=Temp9am, y=Pressure9am, colour=RainToday))+geom_point()
+grafico2 #Se entiende mejor al aplicar la variable RainToday como color.
+grafico3 <- grafico2+ggtitle("Gráfico de dispersion de la temperatura sobre la presión")
+grafico3
 ```
 
 ### **Ejercicio 3**
